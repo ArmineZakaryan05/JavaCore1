@@ -1,4 +1,7 @@
-package homework.bookStorage;
+package homework.bookStorage.storage;
+
+import homework.bookStorage.model.Author;
+import homework.bookStorage.model.Book;
 
 public class BookStorage {
 
@@ -44,42 +47,40 @@ public class BookStorage {
     }
 
     public void searchBookByPriceRange(double minPrice, double maxPrice) {
-        boolean found = false;
+        double newMin = Math.min(minPrice, maxPrice);
+        double newMax = Math.max(maxPrice, minPrice);
         for (int i = 0; i < size; i++) {
-            if (books[i].getPrice() >= minPrice && books[i].getPrice() <= maxPrice) {
-                System.out.println(books[i]);
-                found = true;
+            Book book = books[i];
+            if (book.getPrice() >= newMin && book.getPrice() <= newMax) {
+                System.out.println(book);
             }
         }
-        if (!found) {
-            System.out.println("No books found in the price range " + minPrice + " to " + maxPrice);
-        }
-
     }
 
-    public boolean deleteBookById(String bookId) {
-        int count = 0;
-
-        for (Book book : books) {
-            if (book.getId().equals(bookId)) {
-                break;
+    public void deleteBookById(String bookId) {
+        int index = getBookIndexById(bookId);
+        if (index != -1) {
+            for (int i = index + 1; i < size; i++) {
+                books[i - 1] = books[i];
             }
-            count++;
-
+            size--;
         }
-        if (count == books.length) {
-            return false;
-        }
-        Book[] newBooks = new Book[books.length - 1];
-        int index = 0;
+    }
 
-        for (int i = 0; i < books.length; i++) {
-            if (i != count) {
-                newBooks[index++] = books[i];
+    private int getBookIndexById(String bookId) {
+        for (int i = 0; i < size; i++) {
+            if (books[i].getId().equals(bookId)) {
+                return i;
             }
-
         }
-        books = newBooks;
-        return true;
+        return -1;
+    }
+
+    public void searchByAuthor(Author author) {
+        for (int i = 0; i < size; i++) {
+            if (books[i].getAuthor().equals(author)){
+                System.out.println(books[i]);
+            }
+        }
     }
 }

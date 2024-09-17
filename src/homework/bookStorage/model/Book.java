@@ -1,5 +1,8 @@
-package homework.bookStorage;
+package homework.bookStorage.model;
 
+import homework.bookStorage.util.DateUtil;
+
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -7,16 +10,18 @@ public class Book {
 
     private String id;
     private String title;
-    private String authorName;
+    private Author author;
     private double price;
     private int quantity;
+    private Date createdAt;
 
-    public Book(String id, String title, String authorName, double price, int quantity) {
+    public Book(String id, String title, Author author, double price, int quantity, Date createdAt) {
         this.id = id;
         this.title = title;
-        this.authorName = authorName;
+        this.author = author;
         this.price = price;
         this.quantity = quantity;
+        this.createdAt = createdAt;
     }
 
     public String getId() {
@@ -35,12 +40,12 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public double getPrice() {
@@ -59,33 +64,44 @@ public class Book {
         this.quantity = quantity;
     }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Book book = (Book) o;
-        return Double.compare(price, book.price) == 0 && quantity == book.quantity && Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(authorName, book.authorName);
+        return Double.compare(price, book.price) == 0 && quantity == book.quantity && Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(author, book.author) && Objects.equals(createdAt, book.createdAt);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hashCode(id);
         result = 31 * result + Objects.hashCode(title);
-        result = 31 * result + Objects.hashCode(authorName);
+        result = 31 * result + Objects.hashCode(author);
         result = 31 * result + Double.hashCode(price);
         result = 31 * result + quantity;
+        result = 31 * result + Objects.hashCode(createdAt);
         return result;
     }
+
 
     @Override
     public String toString() {
         return "Book{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", authorName='" + authorName + '\'' +
+                ", author=" + author +
                 ", price=" + price +
                 ", quantity=" + quantity +
+                ", createdAt=" + DateUtil.fromDateToString(createdAt) +
                 '}';
     }
 }
