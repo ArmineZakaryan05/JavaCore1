@@ -80,5 +80,3 @@ public abstract class Person {
                 '}';
     }
 }
-
-
