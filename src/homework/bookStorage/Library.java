@@ -2,6 +2,7 @@ package homework.bookStorage;
 
 import homework.bookStorage.model.Author;
 import homework.bookStorage.model.Book;
+import homework.bookStorage.model.Gender;
 import homework.bookStorage.storage.AuthorStorage;
 import homework.bookStorage.storage.BookStorage;
 import homework.bookStorage.util.DateUtil;
@@ -74,10 +75,10 @@ public class Library implements LibraryCommands {
 
 
     private static void addAuthor() {
-        System.out.println("Please input id, name, surname, phone, dateOfBirthday(01-01-2000)");
+        System.out.println("Please input id, name, surname, phone, dateOfBirthday(01-01-2000), gender(MALE,FEMALE)");
         String authorDataStr = scanner.nextLine();
         String[] authorDataArr = authorDataStr.split(",");
-        if (authorDataArr.length == 5) {
+        if (authorDataArr.length == 6) {
             String id = authorDataArr[0];
             if (authorStorage.getAuthorById(id) == null) {
                 try {
@@ -87,10 +88,13 @@ public class Library implements LibraryCommands {
                     author.setSurname(authorDataArr[2]);
                     author.setPhone(authorDataArr[3]);
                     author.setDateOfBirthday(DateUtil.fromStringToDate(authorDataArr[4]));
+                    author.setGender(Gender.valueOf(authorDataArr[5]));
                     authorStorage.add(author);
                     System.out.println("Author added!!!");
                 } catch (ParseException e) {
                     System.err.println("Date of Birthday is incorrect!!!");
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Gender is invalid. Allowed values are MALE or FEMALE");
                 }
             } else {
                 System.out.println("Author with  " + id + " id already exists!");

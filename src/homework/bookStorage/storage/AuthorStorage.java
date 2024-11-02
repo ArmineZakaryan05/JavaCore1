@@ -38,7 +38,6 @@ public class AuthorStorage {
     }
 
 
-
     public void deleteAuthor(String authorId) {
         int index = getAuthorIndexById(authorId);
         if (index != -1) {

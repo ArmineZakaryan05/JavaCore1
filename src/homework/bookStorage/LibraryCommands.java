@@ -23,6 +23,6 @@ public interface LibraryCommands {
         System.out.println("Please input " + UPDATE_BOOK + " for UPDATE_BOOK ");
         System.out.println("Please input " + SEARCH_BOOK_BY_PRICE_RANGE + " for SEARCH_BOOK_BY_PRICE_RANGE");
         System.out.println("Please input " + DELETE_BOOK_BY_ID + " for DELETE_BOOK_BY_ID");
-        System.out.println("Please input "  + SEARCH_BOOK_BY_AUTHOR + " for SEARCH_BOOK_BY_AUTHOR");
+        System.out.println("Please input " + SEARCH_BOOK_BY_AUTHOR + " for SEARCH_BOOK_BY_AUTHOR");
     }
 }

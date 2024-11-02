@@ -78,7 +78,7 @@ public class BookStorage {
 
     public void searchByAuthor(Author author) {
         for (int i = 0; i < size; i++) {
-            if (books[i].getAuthor().equals(author)){
+            if (books[i].getAuthor().equals(author)) {
                 System.out.println(books[i]);
             }
         }

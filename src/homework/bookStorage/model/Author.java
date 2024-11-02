@@ -12,13 +12,15 @@ public class Author {
     private String surname;
     private String phone;
     private Date dateOfBirthday;
+    private Gender gender;
 
-    public Author(String id, String name, String surname, String phone, Date dateOfBirthday) {
+    public Author(String id, String name, String surname, String phone, Date dateOfBirthday, Gender gender) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.dateOfBirthday = dateOfBirthday;
+        this.gender = gender;
     }
 
     public Author() {
@@ -64,13 +66,21 @@ public class Author {
         this.dateOfBirthday = dateOfBirthday;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Author author = (Author) o;
-        return Objects.equals(id, author.id) && Objects.equals(name, author.name) && Objects.equals(surname, author.surname) && Objects.equals(phone, author.phone) && Objects.equals(dateOfBirthday, author.dateOfBirthday);
+        return Objects.equals(id, author.id) && Objects.equals(name, author.name) && Objects.equals(surname, author.surname) && Objects.equals(phone, author.phone) && Objects.equals(dateOfBirthday, author.dateOfBirthday) && gender == author.gender;
     }
 
     @Override
@@ -80,6 +90,7 @@ public class Author {
         result = 31 * result + Objects.hashCode(surname);
         result = 31 * result + Objects.hashCode(phone);
         result = 31 * result + Objects.hashCode(dateOfBirthday);
+        result = 31 * result + Objects.hashCode(gender);
         return result;
     }
 
@@ -91,6 +102,7 @@ public class Author {
                 ", surname='" + surname + '\'' +
                 ", phone='" + phone + '\'' +
                 ", dateOfBirthday=" + DateUtil.fromDateToString(dateOfBirthday) +
+                ", gender=" + gender +
                 '}';
     }
 }
