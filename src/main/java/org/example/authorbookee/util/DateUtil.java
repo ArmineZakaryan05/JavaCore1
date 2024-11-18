@@ -43,4 +43,3 @@ public abstract class DateUtil {
         return SDF_DATE_TIME_SQL.format(createdAt);
     }
 }
-

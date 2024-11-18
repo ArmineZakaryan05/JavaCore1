@@ -11,7 +11,6 @@ import java.util.Date;
 @NoArgsConstructor
 
 public class Book {
-
     private int id;
     private String title;
     private Author author;

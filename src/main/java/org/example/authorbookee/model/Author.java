@@ -19,5 +19,4 @@ public class Author {
     private Date dateOfBirthday;
     private Gender gender;
 
-
 }

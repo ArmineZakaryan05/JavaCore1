@@ -28,9 +28,6 @@
     <% }%>
 </select><br>
     <input type="submit" value="ADD">
-
-
 </form>
-
 </body>
 </html>

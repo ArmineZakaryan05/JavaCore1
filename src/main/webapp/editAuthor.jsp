@@ -34,10 +34,6 @@
     <% }%>
 </select><br>
     <input type="submit" value="UPDATE">
-
-
-
 </form>
-
 </body>
 </html>

@@ -23,9 +23,6 @@
     <option value="FEMALE">FEMALE</option>
 </select><br>
     <input type="submit" value="ADD">
-
-
 </form>
-
 </body>
 </html>

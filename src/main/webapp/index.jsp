@@ -11,4 +11,3 @@
 <a href="/authors">View All Authors</a>
 </body>
 </html>
-
